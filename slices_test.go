@@ -81,3 +81,39 @@ func Test_SliceSingle_SliceTooLong(t *testing.T) {
 
 	assert.NotNil(t, err)
 }
+
+func Test_SliceAny_True(t *testing.T) {
+	s := []int{1, 2, 3}
+	f := func(x int) bool { return x == 2 }
+
+	res := SliceAny(s, f)
+
+	assert.Equal(t, true, res)
+}
+
+func Test_SliceAny_False(t *testing.T) {
+	s := []int{4, 5, 6}
+	f := func(x int) bool { return x == 2 }
+
+	res := SliceAny(s, f)
+
+	assert.Equal(t, false, res)
+}
+
+func Test_SliceAll_True(t *testing.T) {
+	s := []int{1, 2, 3}
+	f := func(x int) bool { return x <= 3 }
+
+	res := SliceAll(s, f)
+
+	assert.Equal(t, true, res)
+}
+
+func Test_SliceAll_False(t *testing.T) {
+	s := []int{4, 5, 6}
+	f := func(x int) bool { return x <= 3 }
+
+	res := SliceAll(s, f)
+
+	assert.Equal(t, false, res)
+}

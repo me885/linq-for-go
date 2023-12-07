@@ -48,3 +48,25 @@ func SliceSingle[T any](s []T) (T, error) {
 
 	return s[0], nil
 }
+
+// Returns true if f() return true for at least one element of s
+func SliceAny[T any](s []T, f func(T) bool) bool {
+	for _, v := range s {
+		if f(v) {
+			return true
+		}
+	}
+
+	return false
+}
+
+// Returns true only if f() return true for all elements of s
+func SliceAll[T any](s []T, f func(T) bool) bool {
+	for _, v := range s {
+		if !f(v) {
+			return false
+		}
+	}
+
+	return true
+}

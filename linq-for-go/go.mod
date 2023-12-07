@@ -1,4 +1,4 @@
-module me885/linq-for-go
+module github.com/me885/linq-for-go
 
 go 1.21.4
 

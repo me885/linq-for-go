@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	"me885/linq-for-go"
+
+	"github.com/me885/linq-for-go"
 )
 
 func main() {

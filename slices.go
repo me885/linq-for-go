@@ -5,6 +5,8 @@ import "errors"
 var (
 	ErrorEmptySlice    = errors.New("slice must not be empty or nil")
 	ErrorNotSliceOfOne = errors.New("slice must contain only a single element")
+	ErrorEmptyMap      = errors.New("map must not be empty or nil")
+	ErrorNotMapOfOne   = errors.New("map must contain only a single element")
 )
 
 // Returns a new slice with only the elements for which f() returns true

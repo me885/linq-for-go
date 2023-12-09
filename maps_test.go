@@ -13,7 +13,7 @@ func Test_MapWhere(t *testing.T) {
 		"Dave":  3000,
 		"Greg":  4000,
 	}
-	f := func(k string, v int) bool { return v < 2500 }
+	f := func(kv KeyValue[string, int]) bool { return kv.Val < 2500 }
 
 	res := MapWhere(m, f)
 

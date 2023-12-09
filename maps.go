@@ -1,11 +1,25 @@
 package linq
 
+// Key-Value pair for maps
+type KeyValue[K comparable, V any] struct {
+	Key K
+	Val V
+}
+
+type KV[K comparable, V any] KeyValue[K, V]
+
+// Create KeyValue pair struct from two values.
+// Is shorter than manually constructing a KeyValue so may be usefull for inline anonymous functions
+func Pair[K comparable, V any](key K, value V) KeyValue[K, V] {
+	return KeyValue[K, V]{Key: key, Val: value}
+}
+
 // Returns a new map with only the elements for which f() returns true
-func MapWhere[K comparable, V any](m map[K]V, fn func(key K, value V) bool) map[K]V {
+func MapWhere[K comparable, V any](m map[K]V, fn func(pair KeyValue[K, V]) bool) map[K]V {
 	newMap := map[K]V{}
 
 	for k, v := range m {
-		if fn(k, v) {
+		if fn(KeyValue[K, V]{k, v}) {
 			newMap[k] = v
 		}
 	}

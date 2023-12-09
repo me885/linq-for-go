@@ -59,8 +59,8 @@ func Test_MapSelectToSlice(t *testing.T) {
 		"Bob":  23,
 	}
 
-	f := func(key string, val int) Person {
-		return Person{Name: key, Age: val}
+	f := func(kv KeyValue[string, int]) Person {
+		return Person{Name: kv.Key, Age: kv.Val}
 	}
 
 	res := MapSelectToSlice(m, f)

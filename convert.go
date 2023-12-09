@@ -24,11 +24,11 @@ func MapToSlice[T any, K comparable](m map[K]T) []T {
 }
 
 // Creates a slice from each key value pair in a map
-func MapSelectToSlice[T any, K comparable, V any](m map[K]V, f func(K, V) T) []T {
+func MapSelectToSlice[T any, K comparable, V any](m map[K]V, f func(KeyValue[K, V]) T) []T {
 	slice := make([]T, 0)
 
 	for k, v := range m {
-		slice = append(slice, f(k, v))
+		slice = append(slice, f(Pair(k, v)))
 	}
 
 	return slice

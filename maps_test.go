@@ -75,3 +75,15 @@ func Test_MapSingle_SliceTooLong(t *testing.T) {
 
 	assert.NotNil(t, err)
 }
+
+func Test_MapAggregate(t *testing.T) {
+	m := map[string]int{
+		"Alice": 10,
+		"Bob":   20,
+	}
+	f := func(a int, b int) int { return a + b }
+
+	res := MapAggregate(m, 0, f)
+
+	assert.Equal(t, 30, res)
+}

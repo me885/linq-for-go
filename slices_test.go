@@ -117,3 +117,21 @@ func Test_SliceAll_False(t *testing.T) {
 
 	assert.Equal(t, false, res)
 }
+
+func Test_SliceAggregate(t *testing.T) {
+	s := []int{1, 2, 3}
+	f := func(a int, b int) int { return a + b }
+
+	res := SliceAggregate(s, 0, f)
+
+	assert.Equal(t, 6, res)
+}
+
+func Test_SliceAggregate_WithSeed(t *testing.T) {
+	s := []string{"Bill", "Bob"}
+	f := func(a string, b string) string { return a + " " + b }
+
+	res := SliceAggregate(s, "Names:", f)
+
+	assert.Equal(t, "Names: Bill Bob", res)
+}

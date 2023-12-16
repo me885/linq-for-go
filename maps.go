@@ -52,3 +52,13 @@ func MapSingle[K comparable, V any](m map[K]V) (V, error) {
 
 	return singleV, nil
 }
+
+func MapAggregate[K comparable, V any](m map[K]V, seed V, f func(a V, b V) V) V {
+	agg := seed
+
+	for _, v := range m {
+		agg = f(agg, v)
+	}
+
+	return agg
+}

@@ -72,3 +72,13 @@ func SliceAll[T any](s []T, f func(T) bool) bool {
 
 	return true
 }
+
+func SliceAggregate[T any](slice []T, seed T, f func(a T, b T) T) T {
+	agg := seed
+
+	for _, v := range slice {
+		agg = f(agg, v)
+	}
+
+	return agg
+}
